@@ -13,7 +13,7 @@ namespace CAKMAMHRS
 {
     public partial class datestable : Form
     {
-       
+
 
         public datestable()
         {
@@ -81,7 +81,7 @@ namespace CAKMAMHRS
 
         void textboxeditor()
         {
-            
+
             textBox1.Text = datetime();
 
 
@@ -100,7 +100,7 @@ namespace CAKMAMHRS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             newtableappointment newpage = new newtableappointment(textBox1.Text);
             newpage.ShowDialog();
 

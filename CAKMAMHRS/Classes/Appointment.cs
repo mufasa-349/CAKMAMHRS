@@ -21,7 +21,7 @@ namespace CAKMAMHRS.Classes
         public string? patient_name { get; set; }
         public string? status { get; set; }
 
-        //string connectionString = "Server=DESKTOP-JH0VPAC; Database=testdb;Integrated Security=True;TrustServerCertificate=True";
+        //string connectionString = "Server=DESKTOP-FH9G5K2\SQLEXPRESS; Database=testdb;Integrated Security=True;TrustServerCertificate=True";
         public string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
 
 
@@ -31,7 +31,7 @@ namespace CAKMAMHRS.Classes
 
             SqlConnection con = new SqlConnection(connectionString);
 
-            string selectSQL = "SELECT AppointmentID, A_Date, room, doctor_name, patient_name, status from GetAppointmentData";
+            string selectSQL = "SELECT APPOINTMENTID, A_DATE, ROOM, DOCTORNAME, PATIENTNAME, STATUS from GETAPPOINTMENTDATA";
 
             con.Open();
 
@@ -45,12 +45,12 @@ namespace CAKMAMHRS.Classes
                 {
                     Appointment appointment = new Appointment();
 
-                    appointment.AppointmentID = Convert.ToInt32(dr["AppointmentID"]);
-                    appointment.A_Date = Convert.ToDateTime(dr["A_Date"]);
-                    appointment.room = dr["room"].ToString();
-                    appointment.doctor_name = dr["doctor_name"].ToString();
-                    appointment.patient_name = dr["patient_name"].ToString();
-                    appointment.status = dr["status"].ToString();
+                    appointment.AppointmentID = Convert.ToInt32(dr["APPOINTMENTID"]);
+                    appointment.A_Date = Convert.ToDateTime(dr["A_DATE"]);
+                    appointment.room = dr["ROOM"].ToString();
+                    appointment.doctor_name = dr["DOCTORNAME"].ToString();
+                    appointment.patient_name = dr["PATIENTNAME"].ToString();
+                    appointment.status = dr["STATUS"].ToString();
 
                     AppointmentList.Add(appointment);
 
@@ -73,9 +73,25 @@ namespace CAKMAMHRS.Classes
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add(new SqlParameter("@A_Date", appointment.A_Date));
-            cmd.Parameters.Add(new SqlParameter("@room", appointment.room));
-            cmd.Parameters.Add(new SqlParameter("@doctorName", appointment.doctor_name));
-            cmd.Parameters.Add(new SqlParameter("@patientName", appointment.patient_name));
+            cmd.Parameters.Add(new SqlParameter("@ROOMCODE", appointment.room));
+            cmd.Parameters.Add(new SqlParameter("@DOCTORNAME", appointment.doctor_name));
+            cmd.Parameters.Add(new SqlParameter("@PATIENTNAME", appointment.patient_name));
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public void UNAVALIABLE(Appointment appointment)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand("UNAVALIABLE", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new SqlParameter("@COLUMN", appointment.A_Date.Hour.ToString()));
+            cmd.Parameters.Add(new SqlParameter("@GUN", appointment.A_Date.Day.ToString()));
 
             con.Open();
             cmd.ExecuteNonQuery();
@@ -87,7 +103,7 @@ namespace CAKMAMHRS.Classes
         {
             SqlConnection con = new SqlConnection(connectionString);
 
-            string selectSQL = "select AppointmentID, A_Date, room, doctor_name, patient_name, status from GetAppointmentData where appointmentID = " + appointmentid;
+            string selectSQL = "SELECT APPOINTMENTID, A_DATE, ROOM, DOCTORNAME, PATIENTNAME, STATUS from GETAPPOINTMENTDATA where APPOINTMENTID = " + appointmentid;
             con.Open();
 
             SqlCommand cmd = new SqlCommand(selectSQL, con);
@@ -102,12 +118,12 @@ namespace CAKMAMHRS.Classes
                 {
 
 
-                    appointment.AppointmentID = Convert.ToInt32(dr["AppointmentID"]);
-                    appointment.A_Date = Convert.ToDateTime(dr["A_Date"]);
-                    appointment.room = dr["room"].ToString();
-                    appointment.doctor_name = dr["doctor_name"].ToString();
-                    appointment.patient_name = dr["patient_name"].ToString();
-                    appointment.status = dr["status"].ToString();
+                    appointment.AppointmentID = Convert.ToInt32(dr["APPOINTMENTID"]);
+                    appointment.A_Date = Convert.ToDateTime(dr["A_DATE"]);
+                    appointment.room = dr["ROOM"].ToString();
+                    appointment.doctor_name = dr["DOCTORNAME"].ToString();
+                    appointment.patient_name = dr["PATIENTNAME"].ToString();
+                    appointment.status = dr["STATUS"].ToString();
                 }
 
             }
@@ -144,7 +160,7 @@ namespace CAKMAMHRS.Classes
             SqlCommand cmd = new SqlCommand("DELETEAPPO", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add(new SqlParameter("@APPOID", appoID));
+            cmd.Parameters.Add(new SqlParameter("@AppointmentID", appoID));
 
             con.Open();
             cmd.ExecuteNonQuery();

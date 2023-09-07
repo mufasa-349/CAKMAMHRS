@@ -39,41 +39,41 @@
             // dataGridViewDateTAble
             // 
             dataGridViewDateTAble.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDateTAble.Location = new Point(22, 61);
-            dataGridViewDateTAble.Margin = new Padding(6);
+            dataGridViewDateTAble.Location = new Point(19, 53);
+            dataGridViewDateTAble.Margin = new Padding(5, 5, 5, 5);
             dataGridViewDateTAble.Name = "dataGridViewDateTAble";
             dataGridViewDateTAble.RowHeadersWidth = 51;
             dataGridViewDateTAble.RowTemplate.Height = 29;
-            dataGridViewDateTAble.Size = new Size(1455, 555);
+            dataGridViewDateTAble.Size = new Size(1261, 480);
             dataGridViewDateTAble.TabIndex = 0;
             dataGridViewDateTAble.CellContentClick += dataGridViewDateTAble_CellContentClick;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(43, 670);
-            textBox1.Margin = new Padding(6);
+            textBox1.Location = new Point(37, 579);
+            textBox1.Margin = new Padding(5, 5, 5, 5);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(983, 43);
+            textBox1.Size = new Size(852, 39);
             textBox1.TabIndex = 1;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(43, 627);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(37, 542);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(231, 37);
+            label1.Size = new Size(206, 32);
             label1.TabIndex = 2;
             label1.Text = "appointment date";
             label1.Click += label1_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(1249, 666);
-            button1.Margin = new Padding(6);
+            button1.Location = new Point(1082, 576);
+            button1.Margin = new Padding(5, 5, 5, 5);
             button1.Name = "button1";
-            button1.Size = new Size(176, 54);
+            button1.Size = new Size(153, 47);
             button1.TabIndex = 3;
             button1.Text = "display date";
             button1.UseVisualStyleBackColor = true;
@@ -81,26 +81,26 @@
             // 
             // button2
             // 
-            button2.Location = new Point(1041, 670);
-            button2.Margin = new Padding(6);
+            button2.Location = new Point(902, 579);
+            button2.Margin = new Padding(5, 5, 5, 5);
             button2.Name = "button2";
-            button2.Size = new Size(197, 54);
+            button2.Size = new Size(171, 47);
             button2.TabIndex = 4;
-            button2.Text = "closebutton";
+            button2.Text = "newAppo";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
             // datestable
             // 
-            AutoScaleDimensions = new SizeF(15F, 37F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1500, 832);
+            ClientSize = new Size(1300, 720);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(dataGridViewDateTAble);
-            Margin = new Padding(6);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "datestable";
             Text = "datestable";
             Load += datestable_Load;
